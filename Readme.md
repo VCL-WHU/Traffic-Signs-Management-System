@@ -118,3 +118,124 @@ repo_dir_1:
     ]
 }
 ```
+
+## 3. 代码结构
+
+### 3.1 文件映射到变量
+
+#### 3.1.1 `datapool_info.json` 到 `self._datapool_info`
+
+```
+datapool_info.json
+
+{
+    "maxid": (datapool_info_maxid),
+    "repo_props": [
+        {
+            "name": (repo_name),
+            "id": (repo_id),
+            "volume": volume,
+            "description": description,
+            "datatime": datatime,
+            "path": (repo_path)
+        }
+        ...
+    ]
+}
+
+self._datapool_info:
+
+        {
+            "maxid": (datapool_info_maxid),
+      +-----"repo_props": {
+      |         (repo_name):
+      |    +----{
+      |    |        "name": (repo_name),
+repo_props |        "id": (repo_id),
+      |    |        "volume": volume,
+      |repo_prop    "description": description,
+      |    |        "datatime": datatime,
+      |    |        "path": (repo_path)
+      |    +----}
+      |         ...
+      +-----}
+        }
+```
+
+#### 3.1.2 `repo_info.json` 到 `self._repos_info`
+
+```
+repo_info.json:
+
+{
+    "maxid": (repo_info_maxid),
+    "catalog_props": [
+        {
+            "name": (catalog_name),
+            "id": (catalog_id),
+            "volume": volume,
+            "subdir": (catalog_subdir),
+            "description": description,
+            "datatime": datatime
+        }
+        ...
+    ]
+}
+
+self._repos_info:
+
+    +--------------{
+    |                  (repo_id):
+    |      +-----------{
+    |      |               "maxid": (repo_info_maxid),
+    |      |               "catalog_props":
+    |      |       +-------{
+    |      |       |           (catalog_name):
+    |      |       |       +---{
+repos_info |       |       |       "name": (catalog_name),
+    |      |       |       |       "id": (catalog_id),
+    |  repo_info   |       |       "volume": volume
+    |      | catalog_props |       "subdir": subdir,
+    |      |       |  catalog_prop "description": description,
+    |      |       |       |       "datatime": datatime
+    |      |       |       +---}
+    |      |       |           ...
+    |      |       +-------}
+    |      +-----------}
+    |                  ...
+    +--------------}
+```
+
+#### 3.1.3 `catalog_info.json` 到 `catalog_info`
+
+```
+catalog_info.json:
+
+{
+    "maxid": maxid,
+    "signlist_props": [
+        {
+            "id": id,
+            "volume": volume,
+            "datatime": datatime,
+            "description": description,
+        }
+        ...
+    ]
+}
+
+catalog_info:
+
+{
+    "maxid": maxid,
+    "signlist_props": [
+        {
+            "id": id,
+            "volume": volume,
+            "datatime": datatime,
+            "description": description,
+        }
+        ...
+    ]
+}
+```
