@@ -136,7 +136,7 @@ datapool_info.json
             "id": (repo_id),
             "volume": volume,
             "description": description,
-            "datatime": datatime,
+            "datetime": datatime,
             "path": (repo_path)
         }
         ...
@@ -154,7 +154,7 @@ self._datapool_info:
 repo_props |        "id": (repo_id),
       |    |        "volume": volume,
       |repo_prop    "description": description,
-      |    |        "datatime": datatime,
+      |    |        "datetime": datatime,
       |    |        "path": (repo_path)
       |    +----}
       |         ...
@@ -176,7 +176,7 @@ repo_info.json:
             "volume": volume,
             "subdir": (catalog_subdir),
             "description": description,
-            "datatime": datatime
+            "datetime": datatime
         }
         ...
     ]
@@ -197,7 +197,7 @@ repos_info |       |       |       "name": (catalog_name),
     |  repo_info   |       |       "volume": volume
     |      | catalog_props |       "subdir": subdir,
     |      |       |  catalog_prop "description": description,
-    |      |       |       |       "datatime": datatime
+    |      |       |       |       "datetime": datatime
     |      |       |       +---}
     |      |       |           ...
     |      |       +-------}
@@ -217,7 +217,7 @@ catalog_info.json:
         {
             "id": id,
             "volume": volume,
-            "datatime": datatime,
+            "datetime": datatime,
             "description": description,
         }
         ...
@@ -232,7 +232,7 @@ catalog_info:
         {
             "id": id,
             "volume": volume,
-            "datatime": datatime,
+            "datetime": datatime,
             "description": description,
         }
         ...
