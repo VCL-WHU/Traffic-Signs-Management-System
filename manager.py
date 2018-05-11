@@ -72,9 +72,7 @@ class SystemManager:
 
             src_catalog_path = os.path.join(temp_dir, catalog_dir)
 
-            files = tools.get_files(src_catalog_path)
-            signs = [a_file for a_file in files if a_file.endswith('.jpg')]
-            self.add_signs_to_catalog(final_repo_name, catalog_dir, src_catalog_path, len(signs), 'unknown', 'create automatically.')
+            self.add_signs_to_catalog(final_repo_name, catalog_dir, src_catalog_path, self._count_pictures(src_catalog_path), 'unknown', 'create automatically.')
         
         return temp_dir
 
@@ -84,9 +82,14 @@ class SystemManager:
 
         unadded_dirs = []
         for src_catalog_dir in src_catalog_dirs:
+            dest_catalog_name = src_catalog_dir
+
+            if not args is None:
+                dest_catalog_name = args[src_catalog_dir]
+            
             if self.has_catalog(repo_name, src_catalog_dir):
                 src_catalog_path = os.path.join(src_dir, src_catalog_dir)
-                self.add_signs_to_catalog(repo_name, src_catalog_dir, src_catalog_path, 0, 'unknown', 'add automatically.', auto_count=True)
+                self.add_signs_to_catalog(repo_name, dest_catalog_name, src_catalog_path, 0, 'unknown', 'add automatically.', auto_count=True)
             else:
                 unadded_dirs.append(src_catalog_dir)
         
