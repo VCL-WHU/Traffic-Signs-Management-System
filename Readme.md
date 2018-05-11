@@ -64,7 +64,7 @@ repo_dir_1:
 
 `datapool_info.json`
 
-```Json
+```
 {
     "repos_paths": [
         path1,  // 仓库路径 1
@@ -76,7 +76,7 @@ repo_dir_1:
 
 `repo_info.json`
 
-```Json
+```
 {
     "name": "sample_repo",   // 仓库名
     "volume": 880,           // 图片总量
@@ -91,7 +91,7 @@ repo_dir_1:
 
 `catalog_info.json`
 
-```Json
+```
 {
     "name": "31 限制高度",  // 分类名
     "volume": 438,         // 分类下图片数量
@@ -103,7 +103,7 @@ repo_dir_1:
 
 `signs_list_info.json`
 
-```Json
+```
 {
     "1": {  // 分类下系列 1，为其 id，也是其子文件夹名
         "volume": 219,          // 该系列图片数量
@@ -183,6 +183,6 @@ repo_dir_1:
 
 ### 3.4 注意事项
 
-`manager.global_manager` 为唯一全局 `SystemManager` 实例，一般情况下应不再创建其它实例，避免信息出现差错。
+* `manager.global_manager` 为唯一全局 `SystemManager` 实例，一般情况下应不再创建其它实例，避免信息出现差错。
 
-可通过包含 `manager.py` 包将管理系统引入自己的代码中使用。
+* 可通过包含 `manager.py` 包将管理系统引入自己的代码中使用。
